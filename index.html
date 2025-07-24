@@ -209,18 +209,19 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-8">
-            <form>
-              <div class="mb-3">
+            <form name="RBS-Contact-Form">
+              <div class="mb-3 ">
                 <label for="name" class="form-label">Full Name</label>
                 <input
                   type="name"
                   class="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
+                  name="nama"
                 />
               </div>
 
-              <div class="mb-3">
+              <div class="mb-3 ">
                 <label for="exampleInputEmail1" class="form-label"
                   >Email address</label
                 >
@@ -229,15 +230,17 @@
                   class="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
+                  name="email"
                 />
               </div>
 
-              <div class="mb-3">
+              <div class="mb-3 ">
                 <label for="pesan" class="form-label">Pesan</label>
                 <textarea
                   class="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
+                  name="pesan"
                 ></textarea>
               </div>
 
@@ -257,7 +260,10 @@
     <!-- contact end-->
 
     <!-- footer -->
-    <footer class="bg-primary text-white text-center pb-1 justify-content-center" id="contact">
+    <footer
+      class="bg-primary text-white text-center pb-1 justify-content-center"
+      id="contact"
+    >
       <p>
         Create with <i class="bi bi-heart-fill text-danger"></i> by
         <a href="#" class="fw-bold text-white text-decoration-none"
@@ -272,5 +278,17 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxzy57tDmneKLUt8kPE_sVTA_ZoIuh8odGTF2Pinv1kwpuMaNfTySU9MoA6InU6Ht5s/exec'
+  const form = document.forms['rbs-contact-form']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
   </body>
 </html>
