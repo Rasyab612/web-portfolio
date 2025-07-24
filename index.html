@@ -244,7 +244,15 @@
                 ></textarea>
               </div>
 
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="submit" class="btn btn-primary btn-kirim">Submit</button>
+
+              <button class="btn btn-primary btn-loading" type="button" disabled>
+                <span
+                  class="spinner-border spinner-border-sm"
+                  aria-hidden="true"
+                ></span>
+                <span role="status">Loading...</span>
+              </button>
             </form>
           </div>
         </div>
@@ -279,16 +287,17 @@
       crossorigin="anonymous"
     ></script>
 
-   <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbznmgR30E68z4jUDHGGW85Sp-dE0OzpGkA8oR3y0rC6tToLHxYJuCTLK79a7-X0htcyHw/exec';
-  const form = document.forms['submit-to-google-sheet']
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbznmgR30E68z4jUDHGGW85Sp-dE0OzpGkA8oR3y0rC6tToLHxYJuCTLK79a7-X0htcyHw/exec";
+      const form = document.forms["submit-to-google-sheet"];
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  })
-</script>
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
